@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB79DA221B87EBA500CA9EC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA211B87EBA500CA9EC2 /* AppDelegate.m */; };
+		CB79DA251B87EBA500CA9EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA241B87EBA500CA9EC2 /* main.m */; };
+		CB79DA271B87EBA500CA9EC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA261B87EBA500CA9EC2 /* Assets.xcassets */; };
+		CB79DA2A1B87EBA500CA9EC2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA281B87EBA500CA9EC2 /* MainMenu.xib */; };
+		CB79DA481B87EC4300CA9EC2 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA471B87EC4300CA9EC2 /* GameView.mm */; };
+		CB79DA4F1B880B6700CA9EC2 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA4D1B880B6700CA9EC2 /* GameManager.cpp */; };
+		CB79DA741B88323600CA9EC2 /* spaceBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA731B88323600CA9EC2 /* spaceBackground.jpg */; };
+		CB79DA7D1B8A302700CA9EC2 /* Shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA7C1B8A302700CA9EC2 /* Shaders.cpp */; };
+		CB79DA7F1B8A3B7A00CA9EC2 /* spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA7E1B8A3B7A00CA9EC2 /* spaceship.png */; };
+		CBF4D8461B8B8A6600A5DE01 /* gridBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */; };
+		CBF4D8491B8D5F9100A5DE01 /* GlSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CBF4D8471B8D5F9100A5DE01 /* GlSprite.cpp */; };
+		CBF4D84B1B8D7A0400A5DE01 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = CBF4D84A1B8D7A0400A5DE01 /* laser.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CB3B88091B8E9B5200FC636E /* EntityManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EntityManager.hpp; sourceTree = "<group>"; };
+		CB3B880C1B8FA1E600FC636E /* TransformComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
+		CB3B880F1B8FA22500FC636E /* SpriteRenderComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteRenderComponent.hpp; sourceTree = "<group>"; };
+		CB3B88181B8FAF9700FC636E /* SpriteRenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteRenderSystem.hpp; sourceTree = "<group>"; };
+		CB3B881A1B8FB22A00FC636E /* ComponentTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ComponentTypes.hpp; sourceTree = "<group>"; };
+		CB3B881B1B8FCD1800FC636E /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		CB3B881C1B91595C00FC636E /* PlayerAISystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerAISystem.hpp; sourceTree = "<group>"; };
+		CB3B881F1B9168A900FC636E /* DiesWhenOffscreenComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiesWhenOffscreenComponent.hpp; sourceTree = "<group>"; };
+		CB3B88201B916BE500FC636E /* DiesWhenOffscreenSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DiesWhenOffscreenSystem.hpp; sourceTree = "<group>"; };
+		CB3B88211B916CD900FC636E /* AutoMovementSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AutoMovementSystem.hpp; sourceTree = "<group>"; };
+		CB3B88221B93AFA500FC636E /* PlayerDetailsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerDetailsComponent.hpp; sourceTree = "<group>"; };
+		CB79DA1D1B87EBA500CA9EC2 /* Space Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Shooter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB79DA201B87EBA500CA9EC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CB79DA211B87EBA500CA9EC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CB79DA241B87EBA500CA9EC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CB79DA261B87EBA500CA9EC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB79DA291B87EBA500CA9EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CB79DA2B1B87EBA500CA9EC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB79DA471B87EC4300CA9EC2 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameView.mm; sourceTree = "<group>"; };
+		CB79DA491B87EC4C00CA9EC2 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		CB79DA4D1B880B6700CA9EC2 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		CB79DA4E1B880B6700CA9EC2 /* GameManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
+		CB79DA6A1B88123F00CA9EC2 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = "Space Shooter/stb_image.h"; sourceTree = "<group>"; };
+		CB79DA6C1B88155E00CA9EC2 /* GlUtils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlUtils.hpp; sourceTree = "<group>"; };
+		CB79DA6E1B8816F300CA9EC2 /* Shaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shaders.hpp; sourceTree = "<group>"; };
+		CB79DA6F1B881A7100CA9EC2 /* GameTypes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameTypes.hpp; sourceTree = "<group>"; };
+		CB79DA731B88323600CA9EC2 /* spaceBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = spaceBackground.jpg; path = "Space Shooter/Resources/spaceBackground.jpg"; sourceTree = "<group>"; };
+		CB79DA7C1B8A302700CA9EC2 /* Shaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shaders.cpp; sourceTree = "<group>"; };
+		CB79DA7E1B8A3B7A00CA9EC2 /* spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spaceship.png; path = "Space Shooter/Resources/spaceship.png"; sourceTree = "<group>"; };
+		CB79DA801B8ABB6500CA9EC2 /* GlobalDefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlobalDefines.hpp; sourceTree = "<group>"; };
+		CBA96E7B1B966B9800929A6C /* AABBComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AABBComponent.hpp; sourceTree = "<group>"; };
+		CBA96E7F1B9676C100929A6C /* AutoMovementComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AutoMovementComponent.hpp; sourceTree = "<group>"; };
+		CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gridBackground.jpg; path = "Space Shooter/Resources/gridBackground.jpg"; sourceTree = "<group>"; };
+		CBF4D8471B8D5F9100A5DE01 /* GlSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlSprite.cpp; sourceTree = "<group>"; };
+		CBF4D8481B8D5F9100A5DE01 /* GlSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlSprite.hpp; sourceTree = "<group>"; };
+		CBF4D84A1B8D7A0400A5DE01 /* laser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = laser.png; path = "Space Shooter/Resources/laser.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB79DA1A1B87EBA500CA9EC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB3B88111B8FA51800FC636E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CB3B880C1B8FA1E600FC636E /* TransformComponent.hpp */,
+				CB3B880F1B8FA22500FC636E /* SpriteRenderComponent.hpp */,
+				CB3B881F1B9168A900FC636E /* DiesWhenOffscreenComponent.hpp */,
+				CB3B88221B93AFA500FC636E /* PlayerDetailsComponent.hpp */,
+				CBA96E7B1B966B9800929A6C /* AABBComponent.hpp */,
+				CBA96E7F1B9676C100929A6C /* AutoMovementComponent.hpp */,
+				CB3B881A1B8FB22A00FC636E /* ComponentTypes.hpp */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		CB3B88151B8FAF5200FC636E /* CES */ = {
+			isa = PBXGroup;
+			children = (
+				CB3B881B1B8FCD1800FC636E /* Entity.hpp */,
+				CB3B88091B8E9B5200FC636E /* EntityManager.hpp */,
+				CB3B88111B8FA51800FC636E /* Components */,
+				CB3B88161B8FAF7200FC636E /* Systems */,
+			);
+			name = CES;
+			sourceTree = "<group>";
+		};
+		CB3B88161B8FAF7200FC636E /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				CB3B88181B8FAF9700FC636E /* SpriteRenderSystem.hpp */,
+				CB3B881C1B91595C00FC636E /* PlayerAISystem.hpp */,
+				CB3B88201B916BE500FC636E /* DiesWhenOffscreenSystem.hpp */,
+				CB3B88211B916CD900FC636E /* AutoMovementSystem.hpp */,
+			);
+			name = Systems;
+			sourceTree = "<group>";
+		};
+		CB79DA141B87EBA500CA9EC2 = {
+			isa = PBXGroup;
+			children = (
+				CB79DA701B88275200CA9EC2 /* Images */,
+				CB79DA691B88122900CA9EC2 /* 3rd Party */,
+				CB79DA1F1B87EBA500CA9EC2 /* Space Shooter */,
+				CB79DA1E1B87EBA500CA9EC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB79DA1E1B87EBA500CA9EC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB79DA1D1B87EBA500CA9EC2 /* Space Shooter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB79DA1F1B87EBA500CA9EC2 /* Space Shooter */ = {
+			isa = PBXGroup;
+			children = (
+				CB79DA491B87EC4C00CA9EC2 /* GameView.h */,
+				CB79DA471B87EC4300CA9EC2 /* GameView.mm */,
+				CB79DA201B87EBA500CA9EC2 /* AppDelegate.h */,
+				CB79DA211B87EBA500CA9EC2 /* AppDelegate.m */,
+				CB79DA261B87EBA500CA9EC2 /* Assets.xcassets */,
+				CB79DA281B87EBA500CA9EC2 /* MainMenu.xib */,
+				CB79DA2B1B87EBA500CA9EC2 /* Info.plist */,
+				CB79DA231B87EBA500CA9EC2 /* Supporting Files */,
+				CB79DA4D1B880B6700CA9EC2 /* GameManager.cpp */,
+				CB79DA4E1B880B6700CA9EC2 /* GameManager.hpp */,
+				CB79DA6C1B88155E00CA9EC2 /* GlUtils.hpp */,
+				CB79DA6F1B881A7100CA9EC2 /* GameTypes.hpp */,
+				CB79DA7C1B8A302700CA9EC2 /* Shaders.cpp */,
+				CB79DA6E1B8816F300CA9EC2 /* Shaders.hpp */,
+				CB79DA801B8ABB6500CA9EC2 /* GlobalDefines.hpp */,
+				CBF4D8471B8D5F9100A5DE01 /* GlSprite.cpp */,
+				CBF4D8481B8D5F9100A5DE01 /* GlSprite.hpp */,
+				CB3B88151B8FAF5200FC636E /* CES */,
+			);
+			path = "Space Shooter";
+			sourceTree = "<group>";
+		};
+		CB79DA231B87EBA500CA9EC2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB79DA241B87EBA500CA9EC2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CB79DA691B88122900CA9EC2 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				CB79DA6A1B88123F00CA9EC2 /* stb_image.h */,
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
+		CB79DA701B88275200CA9EC2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CBF4D84A1B8D7A0400A5DE01 /* laser.png */,
+				CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */,
+				CB79DA7E1B8A3B7A00CA9EC2 /* spaceship.png */,
+				CB79DA731B88323600CA9EC2 /* spaceBackground.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB79DA1C1B87EBA500CA9EC2 /* Space Shooter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB79DA2E1B87EBA500CA9EC2 /* Build configuration list for PBXNativeTarget "Space Shooter" */;
+			buildPhases = (
+				CB79DA191B87EBA500CA9EC2 /* Sources */,
+				CB79DA1A1B87EBA500CA9EC2 /* Frameworks */,
+				CB79DA1B1B87EBA500CA9EC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Space Shooter";
+			productName = "Space Shooter";
+			productReference = CB79DA1D1B87EBA500CA9EC2 /* Space Shooter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB79DA151B87EBA500CA9EC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Karl Kirch";
+				TargetAttributes = {
+					CB79DA1C1B87EBA500CA9EC2 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = CB79DA181B87EBA500CA9EC2 /* Build configuration list for PBXProject "Space Shooter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB79DA141B87EBA500CA9EC2;
+			productRefGroup = CB79DA1E1B87EBA500CA9EC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB79DA1C1B87EBA500CA9EC2 /* Space Shooter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB79DA1B1B87EBA500CA9EC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB79DA7F1B8A3B7A00CA9EC2 /* spaceship.png in Resources */,
+				CB79DA271B87EBA500CA9EC2 /* Assets.xcassets in Resources */,
+				CB79DA741B88323600CA9EC2 /* spaceBackground.jpg in Resources */,
+				CB79DA2A1B87EBA500CA9EC2 /* MainMenu.xib in Resources */,
+				CBF4D8461B8B8A6600A5DE01 /* gridBackground.jpg in Resources */,
+				CBF4D84B1B8D7A0400A5DE01 /* laser.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB79DA191B87EBA500CA9EC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB79DA4F1B880B6700CA9EC2 /* GameManager.cpp in Sources */,
+				CB79DA251B87EBA500CA9EC2 /* main.m in Sources */,
+				CB79DA7D1B8A302700CA9EC2 /* Shaders.cpp in Sources */,
+				CB79DA481B87EC4300CA9EC2 /* GameView.mm in Sources */,
+				CB79DA221B87EBA500CA9EC2 /* AppDelegate.m in Sources */,
+				CBF4D8491B8D5F9100A5DE01 /* GlSprite.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CB79DA281B87EBA500CA9EC2 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB79DA291B87EBA500CA9EC2 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CB79DA2C1B87EBA500CA9EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/Space\\ Shooter/3rd_party/eigen-eigen-bdd17ee3b1b3",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CB79DA2D1B87EBA500CA9EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/Space\\ Shooter/3rd_party/eigen-eigen-bdd17ee3b1b3",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CB79DA2F1B87EBA500CA9EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Space Shooter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.karlkirch.Space-Shooter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		CB79DA301B87EBA500CA9EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Space Shooter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.karlkirch.Space-Shooter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB79DA181B87EBA500CA9EC2 /* Build configuration list for PBXProject "Space Shooter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB79DA2C1B87EBA500CA9EC2 /* Debug */,
+				CB79DA2D1B87EBA500CA9EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB79DA2E1B87EBA500CA9EC2 /* Build configuration list for PBXNativeTarget "Space Shooter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB79DA2F1B87EBA500CA9EC2 /* Debug */,
+				CB79DA301B87EBA500CA9EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB79DA151B87EBA500CA9EC2 /* Project object */;
+}

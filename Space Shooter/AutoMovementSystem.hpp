@@ -28,7 +28,7 @@ public:
     }
 
     void moveEntities(double dt) {
-        entityManagerRef->findEntitiesWithTypeMask(componentMask, [&](Entity<EntityManagerTypes...> &entity){
+        entityManagerRef->visitEntitiesWithTypeMask(componentMask, [&](Entity<EntityManagerTypes...> &entity){
             auto &transformComponent = entity.template getComponent<TransformComponent>();
             
             transformComponent.x += transformComponent.dx * dt;

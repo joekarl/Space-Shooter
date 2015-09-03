@@ -16,6 +16,10 @@
 		CB79DA741B88323600CA9EC2 /* spaceBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA731B88323600CA9EC2 /* spaceBackground.jpg */; };
 		CB79DA7D1B8A302700CA9EC2 /* Shaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA7C1B8A302700CA9EC2 /* Shaders.cpp */; };
 		CB79DA7F1B8A3B7A00CA9EC2 /* spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA7E1B8A3B7A00CA9EC2 /* spaceship.png */; };
+		CBC24ACC1B97E634009B4445 /* redPowerup.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC24AC81B97E634009B4445 /* redPowerup.png */; };
+		CBC24ACD1B97E634009B4445 /* darkPowerup.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC24AC91B97E634009B4445 /* darkPowerup.png */; };
+		CBC24ACE1B97E634009B4445 /* greenPowerup.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC24ACA1B97E634009B4445 /* greenPowerup.png */; };
+		CBC24ACF1B97E634009B4445 /* bluePowerup.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC24ACB1B97E634009B4445 /* bluePowerup.png */; };
 		CBF4D8461B8B8A6600A5DE01 /* gridBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */; };
 		CBF4D8491B8D5F9100A5DE01 /* GlSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CBF4D8471B8D5F9100A5DE01 /* GlSprite.cpp */; };
 		CBF4D84B1B8D7A0400A5DE01 /* laser.png in Resources */ = {isa = PBXBuildFile; fileRef = CBF4D84A1B8D7A0400A5DE01 /* laser.png */; };
@@ -54,6 +58,14 @@
 		CB79DA801B8ABB6500CA9EC2 /* GlobalDefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlobalDefines.hpp; sourceTree = "<group>"; };
 		CBA96E7B1B966B9800929A6C /* AABBComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AABBComponent.hpp; sourceTree = "<group>"; };
 		CBA96E7F1B9676C100929A6C /* AutoMovementComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AutoMovementComponent.hpp; sourceTree = "<group>"; };
+		CBC24AC71B97E242009B4445 /* LaserUpgradeSpawnSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaserUpgradeSpawnSystem.hpp; sourceTree = "<group>"; };
+		CBC24AC81B97E634009B4445 /* redPowerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redPowerup.png; path = "Space Shooter/Resources/rando_tileset/redPowerup.png"; sourceTree = "<group>"; };
+		CBC24AC91B97E634009B4445 /* darkPowerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = darkPowerup.png; path = "Space Shooter/Resources/rando_tileset/darkPowerup.png"; sourceTree = "<group>"; };
+		CBC24ACA1B97E634009B4445 /* greenPowerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenPowerup.png; path = "Space Shooter/Resources/rando_tileset/greenPowerup.png"; sourceTree = "<group>"; };
+		CBC24ACB1B97E634009B4445 /* bluePowerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluePowerup.png; path = "Space Shooter/Resources/rando_tileset/bluePowerup.png"; sourceTree = "<group>"; };
+		CBC24AD01B97EAEF009B4445 /* CollisionComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollisionComponent.hpp; sourceTree = "<group>"; };
+		CBC24AD11B97EB10009B4445 /* CollisionSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollisionSystem.hpp; sourceTree = "<group>"; };
+		CBC24AD21B97FBF4009B4445 /* LaserUpgradeComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaserUpgradeComponent.hpp; sourceTree = "<group>"; };
 		CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gridBackground.jpg; path = "Space Shooter/Resources/gridBackground.jpg"; sourceTree = "<group>"; };
 		CBF4D8471B8D5F9100A5DE01 /* GlSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlSprite.cpp; sourceTree = "<group>"; };
 		CBF4D8481B8D5F9100A5DE01 /* GlSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlSprite.hpp; sourceTree = "<group>"; };
@@ -80,6 +92,8 @@
 				CB3B88221B93AFA500FC636E /* PlayerDetailsComponent.hpp */,
 				CBA96E7B1B966B9800929A6C /* AABBComponent.hpp */,
 				CBA96E7F1B9676C100929A6C /* AutoMovementComponent.hpp */,
+				CBC24AD01B97EAEF009B4445 /* CollisionComponent.hpp */,
+				CBC24AD21B97FBF4009B4445 /* LaserUpgradeComponent.hpp */,
 				CB3B881A1B8FB22A00FC636E /* ComponentTypes.hpp */,
 			);
 			name = Components;
@@ -103,6 +117,8 @@
 				CB3B881C1B91595C00FC636E /* PlayerAISystem.hpp */,
 				CB3B88201B916BE500FC636E /* DiesWhenOffscreenSystem.hpp */,
 				CB3B88211B916CD900FC636E /* AutoMovementSystem.hpp */,
+				CBC24AC71B97E242009B4445 /* LaserUpgradeSpawnSystem.hpp */,
+				CBC24AD11B97EB10009B4445 /* CollisionSystem.hpp */,
 			);
 			name = Systems;
 			sourceTree = "<group>";
@@ -169,6 +185,10 @@
 		CB79DA701B88275200CA9EC2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CBC24AC81B97E634009B4445 /* redPowerup.png */,
+				CBC24AC91B97E634009B4445 /* darkPowerup.png */,
+				CBC24ACA1B97E634009B4445 /* greenPowerup.png */,
+				CBC24ACB1B97E634009B4445 /* bluePowerup.png */,
 				CBF4D84A1B8D7A0400A5DE01 /* laser.png */,
 				CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */,
 				CB79DA7E1B8A3B7A00CA9EC2 /* spaceship.png */,
@@ -234,8 +254,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBC24ACE1B97E634009B4445 /* greenPowerup.png in Resources */,
 				CB79DA7F1B8A3B7A00CA9EC2 /* spaceship.png in Resources */,
+				CBC24ACC1B97E634009B4445 /* redPowerup.png in Resources */,
+				CBC24ACF1B97E634009B4445 /* bluePowerup.png in Resources */,
 				CB79DA271B87EBA500CA9EC2 /* Assets.xcassets in Resources */,
+				CBC24ACD1B97E634009B4445 /* darkPowerup.png in Resources */,
 				CB79DA741B88323600CA9EC2 /* spaceBackground.jpg in Resources */,
 				CB79DA2A1B87EBA500CA9EC2 /* MainMenu.xib in Resources */,
 				CBF4D8461B8B8A6600A5DE01 /* gridBackground.jpg in Resources */,

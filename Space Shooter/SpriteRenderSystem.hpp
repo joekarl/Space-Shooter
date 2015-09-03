@@ -12,35 +12,47 @@
 #include "EntityManager.hpp"
 #include <Eigen/Geometry>
 #include "GlUtils.hpp"
+#include <string>
 
 template <typename... EntityManagerTypes>
 class SpriteRenderSystem {
 private:
     EntityManager<EntityManagerTypes...> *entityManagerRef;
-    GLuint backgroundShaderProgramId;
     GLuint spriteShaderProgramId;
+    
+    GlSprite shipSprite;
+    GlSprite laserSprite;
+    GlSprite redPowerupSprite;
+    GlSprite greenPowerupSprite;
+    GlSprite bluePowerupSprite;
     
     int componentMask = 0;
     
 public:
-    void init(EntityManager<EntityManagerTypes...> *entityManagerRef,
-              GLuint backgroundShaderProgramId,
-              GLuint spriteShaderProgramId) {
+    void init(EntityManager<EntityManagerTypes...> *entityManagerRef, std::string resourcesPath) {
         this->entityManagerRef = entityManagerRef;
-        this->backgroundShaderProgramId = backgroundShaderProgramId;
-        this->spriteShaderProgramId = spriteShaderProgramId;
+        
+        spriteShaderProgramId = compileShaders("sprite shaders", SPRITE_VERTEX_SHADER, SPRITE_FRAGMENT_SHADER);
+        
+        if (spriteShaderProgramId == -1) {
+            // we're boned :/
+            printf("OH NOES, SHADERS FAILED TO COMPILE...\n");
+            exit(1);
+        }
+        
+        shipSprite.init(spriteShaderProgramId, resourcesPath + "spaceship.png");
+        laserSprite.init(spriteShaderProgramId, resourcesPath + "laser.png");
+        redPowerupSprite.init(spriteShaderProgramId, resourcesPath + "redPowerup.png");
+        greenPowerupSprite.init(spriteShaderProgramId, resourcesPath + "greenPowerup.png");
+        bluePowerupSprite.init(spriteShaderProgramId, resourcesPath + "bluePowerup.png");
         
         componentMask |= 1 << getTypeId<SpriteRenderComponent>();
         componentMask |= 1 << getTypeId<TransformComponent>();
     }
     
-    void renderBackground() {
-        // noop for now
-    }
-    
     void renderSprites() {
         glUseProgram(spriteShaderProgramId);
-        entityManagerRef->findEntitiesWithTypeMask(componentMask, [](Entity<EntityManagerTypes...> &entity){
+        entityManagerRef->visitEntitiesWithTypeMask(componentMask, [&](Entity<EntityManagerTypes...> &entity){
             auto &spriteComponent = entity.template getComponent<SpriteRenderComponent>();
             auto &transformComponent = entity.template getComponent<TransformComponent>();
             
@@ -51,7 +63,30 @@ public:
             
             Eigen::Transform<GLfloat, 3, Eigen::Affine> transformMatrix = translationVec * scaleVec;
             
-            spriteComponent.sprite->render(transformMatrix.matrix());
+            switch (spriteComponent.sprite) {
+                case SpriteType::SPACESHIP:
+                    shipSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::LASER:
+                    laserSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::RED_POWERUP:
+                    redPowerupSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::GREEN_POWERUP:
+                    greenPowerupSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::BLUE_POWERUP:
+                    bluePowerupSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                default:
+                    break;
+            }
         });
     }
 };

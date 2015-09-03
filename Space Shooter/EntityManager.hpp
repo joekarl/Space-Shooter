@@ -39,7 +39,7 @@ public:
     }
     
     template <typename Func>
-    void findEntitiesWithTypeMask(int typeMask, Func func) {
+    void visitEntitiesWithTypeMask(int typeMask, Func func) {
         for (auto &entity : entities) {
             if (entity.isDead()) {
             }
@@ -49,6 +49,18 @@ public:
                 }
             }
         }
+    }
+    
+    std::vector<size_t> getEntityIDsWithTypeMask(int typeMask) {
+        std::vector<size_t> matchingEntities;
+        for (auto &entity : entities) {
+            if (entity.isDead()) {
+            }
+            else {
+                matchingEntities.push_back(entity.getId());
+            }
+        }
+        return matchingEntities;
     }
     
     Entity<InitVisitorType, ComponentTypes...>& getEntity(size_t id) {

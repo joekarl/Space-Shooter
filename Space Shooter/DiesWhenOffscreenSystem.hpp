@@ -28,7 +28,7 @@ public:
     }
 
     void checkOffscreenPositions() {
-        entityManagerRef->findEntitiesWithTypeMask(componentMask, [](Entity<EntityManagerTypes...> &entity){
+        entityManagerRef->visitEntitiesWithTypeMask(componentMask, [](Entity<EntityManagerTypes...> &entity){
             auto &transformComponent = entity.template getComponent<TransformComponent>();
             auto &aabbComponent = entity.template getComponent<AABBComponent>();
             auto &diesWhenOffscreenComponent = entity.template getComponent<DiesWhenOffscreenComponent>();

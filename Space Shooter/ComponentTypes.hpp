@@ -16,6 +16,8 @@
 #include "DiesWhenOffscreenComponent.hpp"
 #include "AABBComponent.hpp"
 #include "AutoMovementComponent.hpp"
+#include "CollisionComponent.hpp"
+#include "LaserUpgradeComponent.hpp"
 
 template<>
 int getTypeId<TransformComponent>() {
@@ -33,6 +35,11 @@ int getTypeId<PlayerDetailsComponent>() {
 }
 
 template <>
+int getTypeId<CollisionComponent>() {
+    return 3;
+}
+
+template <>
 int getTypeId<DiesWhenOffscreenComponent>() {
     return 4;
 }
@@ -45,6 +52,11 @@ int getTypeId<AABBComponent>() {
 template<>
 int getTypeId<AutoMovementComponent>() {
     return 6;
+}
+
+template<>
+int getTypeId<LaserUpgradeComponent>() {
+    return 7;
 }
 
 #endif /* ComponentTypes_h */

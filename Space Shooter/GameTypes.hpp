@@ -24,4 +24,12 @@ struct GameInput {
     KEY_STATE keys[255];
 };
 
+enum SpriteType {
+    SPACESHIP,
+    LASER,
+    RED_POWERUP,
+    GREEN_POWERUP,
+    BLUE_POWERUP
+};
+
 #endif /* GameTypes_h */

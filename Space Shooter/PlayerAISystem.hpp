@@ -19,15 +19,12 @@ template <typename... EntityManagerTypes>
 class PlayerAISystem {
 private:
     EntityManager<EntityManagerTypes...> *entityManagerRef;
-    GlSprite *laserSprite;
     
     int componentMask = 0;
     
 public:
-    void init(EntityManager<EntityManagerTypes...> *entityManagerRef,
-              GlSprite *laserSprite) {
+    void init(EntityManager<EntityManagerTypes...> *entityManagerRef) {
         this->entityManagerRef = entityManagerRef;
-        this->laserSprite = laserSprite;
         
         componentMask |= 1 << getTypeId<TransformComponent>();
         componentMask |= 1 << getTypeId<PlayerDetailsComponent>();
@@ -35,7 +32,7 @@ public:
     }
     
     void updatePosition(double dt, double gameTime, GameInput &input) {
-        entityManagerRef->findEntitiesWithTypeMask(componentMask, [&](Entity<EntityManagerTypes...> &entity){
+        entityManagerRef->visitEntitiesWithTypeMask(componentMask, [&](Entity<EntityManagerTypes...> &entity){
             
             auto &transformComponent = entity.template getComponent<TransformComponent>();
             auto &playerDetailsComponent = entity.template getComponent<PlayerDetailsComponent>();
@@ -98,7 +95,7 @@ public:
                 
                 auto &laser = entityManagerRef->createEntity();
                 SpriteRenderComponent laserSpriteComponent;
-                laserSpriteComponent.sprite = laserSprite;
+                laserSpriteComponent.sprite = SpriteType::LASER;
                 laserSpriteComponent.scaleX = 32.0 / SCREEN_WIDTH / 2.0;
                 laserSpriteComponent.scaleY = 32.0 / SCREEN_HEIGHT / 2.0;
                 TransformComponent laserTransformComponent;
@@ -111,6 +108,8 @@ public:
                 laserBounds.width = 32.0;
                 laserBounds.height = 32.0;
                 AutoMovementComponent autoMoveComponent;
+                CollisionComponent collisionComponent;
+                laser.addComponent(collisionComponent);
                 laser.addComponent(autoMoveComponent);
                 laser.addComponent(laserBounds);
                 laser.addComponent(laserSpriteComponent);

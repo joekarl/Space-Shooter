@@ -21,60 +21,66 @@
 #include "PlayerAISystem.hpp"
 #include "AutoMovementSystem.hpp"
 #include "DiesWhenOffscreenSystem.hpp"
+#include "LaserUpgradeSpawnSystem.hpp"
+#include "CollisionSystem.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-#define COMPONENT_TYPES TransformComponent, SpriteRenderComponent, PlayerDetailsComponent, DiesWhenOffscreenComponent, AABBComponent, AutoMovementComponent
-
-GlSprite shipSprite;
-GlSprite laserSprite;
+#define COMPONENT_TYPES TransformComponent, SpriteRenderComponent, PlayerDetailsComponent, DiesWhenOffscreenComponent, AABBComponent, AutoMovementComponent, CollisionComponent, LaserUpgradeComponent
 
 EntityManager<COMPONENT_TYPES> entityManager;
 SpriteRenderSystem<COMPONENT_TYPES> renderSystem;
 PlayerAISystem<COMPONENT_TYPES> playerAISystem;
 AutoMovementSystem<COMPONENT_TYPES> autoMovementSystem;
 DiesWhenOffscreenSystem<COMPONENT_TYPES> diesWhenOffscreenSystem;
+LaserUpgradeSpawnSystem<COMPONENT_TYPES> laserUpgradeSpawnSystem;
+CollisionSystem<COMPONENT_TYPES> collisionSystem;
 
 double gameTime = 0;
 bool initialized = false;
 
 void GameManager::init(std::string resourcesPath) {
     
-    // init shaders
-    GLuint backgroundShaderProgramId = compileShaders("background shaders", BACKGROUND_VERTEX_SHADER, BACKGROUND_FRAGMENT_SHADER);
-    GLuint spriteShaderProgramId = compileShaders("sprite shaders", SPRITE_VERTEX_SHADER, SPRITE_FRAGMENT_SHADER);
-    
-    if (backgroundShaderProgramId == -1 || spriteShaderProgramId == -1) {
-        // we're boned :/
-        printf("OH NOES, SHADERS FAILED TO COMPILE...\n");
-        exit(1);
-    }
-
-    shipSprite.init(spriteShaderProgramId, resourcesPath + "spaceship.png");
-    laserSprite.init(spriteShaderProgramId, resourcesPath + "laser.png");
-    
-    renderSystem.init(&entityManager, backgroundShaderProgramId, spriteShaderProgramId);
-    playerAISystem.init(&entityManager, &laserSprite);
+    renderSystem.init(&entityManager, resourcesPath);
+    playerAISystem.init(&entityManager);
     autoMovementSystem.init(&entityManager);
     diesWhenOffscreenSystem.init(&entityManager);
+    laserUpgradeSpawnSystem.init(&entityManager);
+    collisionSystem.init(&entityManager);
     
     auto &shipEntity = entityManager.createEntity();
     TransformComponent shipTransformComponent;
     shipTransformComponent.x = 90;
-    shipTransformComponent.y = 240;
+    shipTransformComponent.y = HALF_SCREEN_HEIGHT;
     AABBComponent playerBounds;
     playerBounds.width = 64;
     playerBounds.height = 64;
     SpriteRenderComponent shipSpriteComponent;
-    shipSpriteComponent.sprite = &shipSprite;
+    shipSpriteComponent.sprite = SpriteType::SPACESHIP;
     shipSpriteComponent.scaleX = playerBounds.width / SCREEN_WIDTH;
     shipSpriteComponent.scaleY = playerBounds.height / SCREEN_HEIGHT;
     PlayerDetailsComponent playerComponent;
+    CollisionComponent collisionComponent([](size_t owningEntity, size_t otherEntity){
+        //auto &ship = entityManager.getEntity(owningEntity);
+        auto &other = entityManager.getEntity(otherEntity);
+        if (other.matchesMask(1 << getTypeId<LaserUpgradeComponent>())) {
+            // it's an upgrade
+            other.kill();
+            auto &otherTransform = other.template getComponent<TransformComponent>();
+            printf("Ship collided with an upgrade at X: %f Y: %f\n", otherTransform.x, otherTransform.y);
+        }
+        
+    });
     shipEntity.addComponent(playerBounds);
     shipEntity.addComponent(shipTransformComponent);
     shipEntity.addComponent(shipSpriteComponent);
     shipEntity.addComponent(playerComponent);
+    shipEntity.addComponent(collisionComponent);
+    
+    // must clean entities here before update loop is run the first time...
+    // why you ask? because the the ship entity hasn't been initialized we'll overwrite it's innards :/
+    entityManager.cleanEntities();
     
     // setup defaults
     glEnable(GL_TEXTURE_2D);
@@ -103,6 +109,10 @@ void GameManager::update(double dt, GameInput &input) {
     
     // update entities that should die when the go offscreen
     diesWhenOffscreenSystem.checkOffscreenPositions();
+    
+    laserUpgradeSpawnSystem.update(dt);
+    
+    collisionSystem.checkCollisions(dt);
     
     entityManager.cleanEntities();
 }

@@ -14,7 +14,7 @@
 
 class SpriteRenderComponent {
 public:
-    GlSprite *sprite;
+    SpriteType sprite;
     float scaleX, scaleY;
     
     template <typename... EntityComponentTypes>

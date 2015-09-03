@@ -49,7 +49,7 @@ private:
     
 public:
     
-    size_t getId() {
+    const size_t getId() {
         return id;
     }
     
@@ -57,7 +57,7 @@ public:
         this->id = id;
     }
     
-    bool isDead() {
+    const bool isDead() {
         return dead;
     }
     
@@ -69,7 +69,7 @@ public:
         this->dead = dead;
     }
     
-    bool isDying() {
+    const bool isDying() {
         return dying;
     }
     
@@ -77,7 +77,7 @@ public:
         this->dying = dying;
     }
     
-    bool isCreating() {
+    const bool isCreating() {
         return creating;
     }
     
@@ -85,7 +85,7 @@ public:
         this->creating = creating;
     }
     
-    int getComponentMask() {
+    const int getComponentMask() {
         return componentMask;
     }
     
@@ -108,6 +108,10 @@ public:
         int typeId = getTypeId<SpecificComponentType>();
         componentMask &= ~(1 << typeId);
         // don't worry about actually removing the component as it's masked off
+    }
+    
+    bool matchesMask(int specifiedMask) {
+        return (specifiedMask & componentMask) == specifiedMask;
     }
     
     void init() {

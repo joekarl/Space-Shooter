@@ -21,7 +21,9 @@ private:
     GLuint spriteShaderProgramId;
     
     GlSprite shipSprite;
-    GlSprite laserSprite;
+    GlSprite laserBlueSprite;
+    GlSprite laserRedSprite;
+    GlSprite laserGreenSprite;
     GlSprite redPowerupSprite;
     GlSprite greenPowerupSprite;
     GlSprite bluePowerupSprite;
@@ -41,7 +43,9 @@ public:
         }
         
         shipSprite.init(spriteShaderProgramId, resourcesPath + "spaceship.png");
-        laserSprite.init(spriteShaderProgramId, resourcesPath + "laser.png");
+        laserBlueSprite.init(spriteShaderProgramId, resourcesPath + "laser.png");
+        laserRedSprite.init(spriteShaderProgramId, resourcesPath + "laserRed.png");
+        laserGreenSprite.init(spriteShaderProgramId, resourcesPath + "laserGreen.png");
         redPowerupSprite.init(spriteShaderProgramId, resourcesPath + "redPowerup.png");
         greenPowerupSprite.init(spriteShaderProgramId, resourcesPath + "greenPowerup.png");
         bluePowerupSprite.init(spriteShaderProgramId, resourcesPath + "bluePowerup.png");
@@ -68,8 +72,16 @@ public:
                     shipSprite.render(transformMatrix.matrix());
                     break;
                     
-                case SpriteType::LASER:
-                    laserSprite.render(transformMatrix.matrix());
+                case SpriteType::RED_LASER:
+                    laserRedSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::BLUE_LASER:
+                    laserBlueSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::GREEN_LASER:
+                    laserGreenSprite.render(transformMatrix.matrix());
                     break;
                     
                 case SpriteType::RED_POWERUP:

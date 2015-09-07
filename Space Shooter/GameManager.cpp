@@ -62,13 +62,32 @@ void GameManager::init(std::string resourcesPath) {
     shipSpriteComponent.scaleY = playerBounds.height / SCREEN_HEIGHT;
     PlayerDetailsComponent playerComponent;
     CollisionComponent collisionComponent([](size_t owningEntity, size_t otherEntity){
-        //auto &ship = entityManager.getEntity(owningEntity);
+        auto &ship = entityManager.getEntity(owningEntity);
         auto &other = entityManager.getEntity(otherEntity);
         if (other.matchesMask(1 << getTypeId<LaserUpgradeComponent>())) {
             // it's an upgrade
             other.kill();
             auto &otherTransform = other.template getComponent<TransformComponent>();
             printf("Ship collided with an upgrade at X: %f Y: %f\n", otherTransform.x, otherTransform.y);
+            auto &laserUpgrade = other.template getComponent<LaserUpgradeComponent>();
+            auto &playerDetails = ship.template getComponent<PlayerDetailsComponent>();
+            
+            switch (laserUpgrade.upgradeType) {
+                case RED:
+                    playerDetails.laserType = RED;
+                    break;
+                    
+                case BLUE:
+                    playerDetails.laserType = BLUE;
+                    break;
+                    
+                case GREEN:
+                    playerDetails.laserType = GREEN;
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
     });

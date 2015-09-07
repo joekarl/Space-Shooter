@@ -95,7 +95,23 @@ public:
                 
                 auto &laser = entityManagerRef->createEntity();
                 SpriteRenderComponent laserSpriteComponent;
-                laserSpriteComponent.sprite = SpriteType::LASER;
+                switch (playerDetailsComponent.laserType) {
+                    case RED:
+                        laserSpriteComponent.sprite = SpriteType::RED_LASER;
+                        break;
+                        
+                    case BLUE:
+                        laserSpriteComponent.sprite = SpriteType::BLUE_LASER;
+                        break;
+                        
+                    case GREEN:
+                        laserSpriteComponent.sprite = SpriteType::GREEN_LASER;
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
                 laserSpriteComponent.scaleX = 32.0 / SCREEN_WIDTH / 2.0;
                 laserSpriteComponent.scaleY = 32.0 / SCREEN_HEIGHT / 2.0;
                 TransformComponent laserTransformComponent;

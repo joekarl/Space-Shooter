@@ -9,11 +9,7 @@
 #ifndef LaserUpgradeComponent_h
 #define LaserUpgradeComponent_h
 
-enum LaserUpgradeType {
-    RED,
-    BLUE,
-    GREEN
-};
+#include "GameTypes.hpp"
 
 class LaserUpgradeComponent {
 public:

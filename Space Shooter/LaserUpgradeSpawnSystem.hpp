@@ -13,7 +13,7 @@
 #include "EntityManager.hpp"
 
 // 10 seconds
-#define SPAWN_RATE 10000
+#define SPAWN_RATE 5000
 
 template <typename ...EntityManagerTypes>
 class LaserUpgradeSpawnSystem {
@@ -22,6 +22,7 @@ private:
     
     double spawnTimer;
     bool firstTime = true;
+    int cycle = 0;
     
 public:
     void init(EntityManager<EntityManagerTypes...> *entityManagerRef) {
@@ -34,11 +35,47 @@ public:
         if (spawnTimer - SPAWN_RATE > 0 || firstTime) {
             spawnTimer = 0;
             firstTime = false;
+            cycle++;
+            cycle %=3;
             
             // spawn a laser powerup
             auto &powerup = entityManagerRef->createEntity();
+            
+            LaserUpgradeComponent laserUpgradeComponent;
+            switch (cycle) {
+                case 0:
+                    laserUpgradeComponent.upgradeType = RED;
+                    break;
+                case 1:
+                    laserUpgradeComponent.upgradeType = BLUE;
+                    break;
+                case 2:
+                    laserUpgradeComponent.upgradeType = GREEN;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             SpriteRenderComponent spriteComponent;
-            spriteComponent.sprite = SpriteType::RED_POWERUP;
+            
+            switch (laserUpgradeComponent.upgradeType) {
+                case RED:
+                    spriteComponent.sprite = SpriteType::RED_POWERUP;
+                    break;
+                    
+                case BLUE:
+                    spriteComponent.sprite = SpriteType::BLUE_POWERUP;
+                    break;
+                    
+                case GREEN:
+                    spriteComponent.sprite = SpriteType::GREEN_POWERUP;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             spriteComponent.scaleX = 64.0 / SCREEN_WIDTH / 2.0;
             spriteComponent.scaleY = 64.0 / SCREEN_HEIGHT / 2.0;
             TransformComponent transformComponent;
@@ -52,7 +89,6 @@ public:
             bounds.height = 32.0;
             AutoMovementComponent autoMoveComponent;
             CollisionComponent collisionComponent;
-            LaserUpgradeComponent laserUpgradeComponent;
             powerup.addComponent(laserUpgradeComponent);
             powerup.addComponent(collisionComponent);
             powerup.addComponent(autoMoveComponent);

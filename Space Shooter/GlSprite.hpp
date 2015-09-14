@@ -12,6 +12,7 @@
 #include <string>
 #include "GlUtils.hpp"
 #include <Eigen/Core>
+#include <vector>
 
 class GlSprite {
 private:
@@ -22,9 +23,13 @@ private:
     GLuint ss_uTexture;
     GLuint ss_uTransform;
     
+    std::vector<GLuint> frameTextureCoordinates;
+    
 public:
     void init(GLuint shaderProgram, std::string spriteImagePath);
+    void init(GLuint shaderProgram, std::string spriteImagePath, float numberOfFrames);
     void render(const Eigen::Matrix<GLfloat, 4, 4> &transformMatrix);
+    void render(const Eigen::Matrix<GLfloat, 4, 4> &transformMatrix, int frameNumber);
 };
 
 #endif /* GlSprite_hpp */

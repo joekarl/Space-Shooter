@@ -21,12 +21,18 @@ template <typename InitVisitorType, typename... ComponentTypes>
 class EntityManager {
 private:
     std::vector<Entity<InitVisitorType, ComponentTypes...>> entities;
+    std::vector<std::function<void(size_t deadEntity)>> onDeathListeners;
     
 public:
     
+    /**
+     * WARNING - THIS CALL CAN OBLITERATE ANY REFERENCE TO AN ENTITY
+     * OR ANY REFERENCE TO A THING IN YOUR ENTITY
+     * AFTER CALLING THIS METHOD YOU SHOULD GET YOUR REFERENCES AGAIN
+     */
     Entity<InitVisitorType, ComponentTypes...>& createEntity() {
         for (auto &entity : entities) {
-            if (entity.isDead()) {
+            if (entity.isDead() && !entity.isCreating() && !entity.isDying()) {
                 entity.setCreating(true);
                 return entity;
             }
@@ -55,8 +61,7 @@ public:
         std::vector<size_t> matchingEntities;
         for (auto &entity : entities) {
             if (entity.isDead()) {
-            }
-            else {
+            } else if ((entity.getComponentMask() & typeMask) == typeMask){
                 matchingEntities.push_back(entity.getId());
             }
         }
@@ -70,6 +75,9 @@ public:
     void cleanEntities() {
         for (auto &entity : entities) {
             if (entity.isDying()) {
+                for (auto &deathFn : onDeathListeners) {
+                    deathFn(entity.getId());
+                }
                 entity.reset();
                 // TODO:(karl)notify entity id is dead so
                 printf("[entity %zu removed]\n", entity.getId());
@@ -80,7 +88,10 @@ public:
                 entity.init();
             }
         }
-
+    }
+    
+    void addDeadEntityListener(std::function<void(size_t deadEntity)> onDeathFunction) {
+        onDeathListeners.push_back(onDeathFunction);
     }
 };
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB6982A11BA107A600E22DC1 /* enemySpaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6982A01BA107A600E22DC1 /* enemySpaceship.png */; };
+		CB6982A51BA6065000E22DC1 /* DebugBounds.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6982A41BA6065000E22DC1 /* DebugBounds.png */; };
+		CB6982A81BA6100900E22DC1 /* explosion_sprites.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6982A61BA6100900E22DC1 /* explosion_sprites.png */; };
+		CB6982A91BA6100900E22DC1 /* explosion.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6982A71BA6100900E22DC1 /* explosion.png */; };
 		CB79DA221B87EBA500CA9EC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA211B87EBA500CA9EC2 /* AppDelegate.m */; };
 		CB79DA251B87EBA500CA9EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB79DA241B87EBA500CA9EC2 /* main.m */; };
 		CB79DA271B87EBA500CA9EC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB79DA261B87EBA500CA9EC2 /* Assets.xcassets */; };
@@ -39,6 +43,15 @@
 		CB3B88201B916BE500FC636E /* DiesWhenOffscreenSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DiesWhenOffscreenSystem.hpp; sourceTree = "<group>"; };
 		CB3B88211B916CD900FC636E /* AutoMovementSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AutoMovementSystem.hpp; sourceTree = "<group>"; };
 		CB3B88221B93AFA500FC636E /* PlayerDetailsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PlayerDetailsComponent.hpp; sourceTree = "<group>"; };
+		CB69829F1BA1058500E22DC1 /* EnemySpawningSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemySpawningSystem.hpp; sourceTree = "<group>"; };
+		CB6982A01BA107A600E22DC1 /* enemySpaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemySpaceship.png; path = "Space Shooter/Resources/enemySpaceship.png"; sourceTree = "<group>"; };
+		CB6982A21BA5FF2F00E22DC1 /* LaserDetailsComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaserDetailsComponent.hpp; sourceTree = "<group>"; };
+		CB6982A31BA6059000E22DC1 /* DebugCollisionRenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DebugCollisionRenderSystem.hpp; sourceTree = "<group>"; };
+		CB6982A41BA6065000E22DC1 /* DebugBounds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DebugBounds.png; path = "Space Shooter/Resources/DebugBounds.png"; sourceTree = "<group>"; };
+		CB6982A61BA6100900E22DC1 /* explosion_sprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion_sprites.png; path = "Space Shooter/Resources/explosion_sprites.png"; sourceTree = "<group>"; };
+		CB6982A71BA6100900E22DC1 /* explosion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = explosion.png; path = "Space Shooter/Resources/explosion.png"; sourceTree = "<group>"; };
+		CB6982AA1BA6105700E22DC1 /* DiesAfterTimePeriodComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiesAfterTimePeriodComponent.hpp; sourceTree = "<group>"; };
+		CB6982AB1BA6113E00E22DC1 /* DiesAfterTimePeriodSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DiesAfterTimePeriodSystem.hpp; sourceTree = "<group>"; };
 		CB79DA1D1B87EBA500CA9EC2 /* Space Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Shooter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB79DA201B87EBA500CA9EC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB79DA211B87EBA500CA9EC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +71,7 @@
 		CB79DA7C1B8A302700CA9EC2 /* Shaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shaders.cpp; sourceTree = "<group>"; };
 		CB79DA7E1B8A3B7A00CA9EC2 /* spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spaceship.png; path = "Space Shooter/Resources/spaceship.png"; sourceTree = "<group>"; };
 		CB79DA801B8ABB6500CA9EC2 /* GlobalDefines.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlobalDefines.hpp; sourceTree = "<group>"; };
+		CB930DC41BA6378600188E02 /* SpriteAnimationSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteAnimationSystem.hpp; sourceTree = "<group>"; };
 		CBA96E7B1B966B9800929A6C /* AABBComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AABBComponent.hpp; sourceTree = "<group>"; };
 		CBA96E7F1B9676C100929A6C /* AutoMovementComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AutoMovementComponent.hpp; sourceTree = "<group>"; };
 		CBC24AC71B97E242009B4445 /* LaserUpgradeSpawnSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaserUpgradeSpawnSystem.hpp; sourceTree = "<group>"; };
@@ -70,6 +84,8 @@
 		CBC24AD21B97FBF4009B4445 /* LaserUpgradeComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LaserUpgradeComponent.hpp; sourceTree = "<group>"; };
 		CBC24AD71B9E050F009B4445 /* laserGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = laserGreen.png; path = "Space Shooter/Resources/laserGreen.png"; sourceTree = "<group>"; };
 		CBC24AD81B9E050F009B4445 /* laserRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = laserRed.png; path = "Space Shooter/Resources/laserRed.png"; sourceTree = "<group>"; };
+		CBCB62F11BA663AC00337D40 /* EnemyAIComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemyAIComponent.hpp; sourceTree = "<group>"; };
+		CBCB62F21BA666DC00337D40 /* EnemyAISystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemyAISystem.hpp; sourceTree = "<group>"; };
 		CBF4D8451B8B8A6600A5DE01 /* gridBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gridBackground.jpg; path = "Space Shooter/Resources/gridBackground.jpg"; sourceTree = "<group>"; };
 		CBF4D8471B8D5F9100A5DE01 /* GlSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlSprite.cpp; sourceTree = "<group>"; };
 		CBF4D8481B8D5F9100A5DE01 /* GlSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GlSprite.hpp; sourceTree = "<group>"; };
@@ -98,7 +114,10 @@
 				CBA96E7F1B9676C100929A6C /* AutoMovementComponent.hpp */,
 				CBC24AD01B97EAEF009B4445 /* CollisionComponent.hpp */,
 				CBC24AD21B97FBF4009B4445 /* LaserUpgradeComponent.hpp */,
+				CB6982A21BA5FF2F00E22DC1 /* LaserDetailsComponent.hpp */,
 				CB3B881A1B8FB22A00FC636E /* ComponentTypes.hpp */,
+				CB6982AA1BA6105700E22DC1 /* DiesAfterTimePeriodComponent.hpp */,
+				CBCB62F11BA663AC00337D40 /* EnemyAIComponent.hpp */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -123,6 +142,11 @@
 				CB3B88211B916CD900FC636E /* AutoMovementSystem.hpp */,
 				CBC24AC71B97E242009B4445 /* LaserUpgradeSpawnSystem.hpp */,
 				CBC24AD11B97EB10009B4445 /* CollisionSystem.hpp */,
+				CB69829F1BA1058500E22DC1 /* EnemySpawningSystem.hpp */,
+				CB6982A31BA6059000E22DC1 /* DebugCollisionRenderSystem.hpp */,
+				CB6982AB1BA6113E00E22DC1 /* DiesAfterTimePeriodSystem.hpp */,
+				CB930DC41BA6378600188E02 /* SpriteAnimationSystem.hpp */,
+				CBCB62F21BA666DC00337D40 /* EnemyAISystem.hpp */,
 			);
 			name = Systems;
 			sourceTree = "<group>";
@@ -189,6 +213,10 @@
 		CB79DA701B88275200CA9EC2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CB6982A61BA6100900E22DC1 /* explosion_sprites.png */,
+				CB6982A71BA6100900E22DC1 /* explosion.png */,
+				CB6982A41BA6065000E22DC1 /* DebugBounds.png */,
+				CB6982A01BA107A600E22DC1 /* enemySpaceship.png */,
 				CBC24AD71B9E050F009B4445 /* laserGreen.png */,
 				CBC24AD81B9E050F009B4445 /* laserRed.png */,
 				CBC24AC81B97E634009B4445 /* redPowerup.png */,
@@ -261,16 +289,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC24ACE1B97E634009B4445 /* greenPowerup.png in Resources */,
+				CB6982A91BA6100900E22DC1 /* explosion.png in Resources */,
 				CB79DA7F1B8A3B7A00CA9EC2 /* spaceship.png in Resources */,
 				CBC24ACC1B97E634009B4445 /* redPowerup.png in Resources */,
 				CBC24ACF1B97E634009B4445 /* bluePowerup.png in Resources */,
 				CB79DA271B87EBA500CA9EC2 /* Assets.xcassets in Resources */,
 				CBC24AD91B9E050F009B4445 /* laserGreen.png in Resources */,
 				CBC24ACD1B97E634009B4445 /* darkPowerup.png in Resources */,
+				CB6982A11BA107A600E22DC1 /* enemySpaceship.png in Resources */,
 				CB79DA741B88323600CA9EC2 /* spaceBackground.jpg in Resources */,
 				CB79DA2A1B87EBA500CA9EC2 /* MainMenu.xib in Resources */,
 				CBC24ADA1B9E050F009B4445 /* laserRed.png in Resources */,
+				CB6982A81BA6100900E22DC1 /* explosion_sprites.png in Resources */,
 				CBF4D8461B8B8A6600A5DE01 /* gridBackground.jpg in Resources */,
+				CB6982A51BA6065000E22DC1 /* DebugBounds.png in Resources */,
 				CBF4D84B1B8D7A0400A5DE01 /* laser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@
 #define CollisionSystem_h
 
 #include "EntityManager.hpp"
+#include <tuple>
 
 template <typename... EntityManagerTypes>
 class CollisionSystem {
@@ -70,14 +71,13 @@ public:
                                   entity2Top < entity1Bottom ||
                                   entity2Bottom > entity1Top);
                 
-                // if so, do something about it I suppose ¯\_(ツ)_/¯
                 if (collides) {
-                    entity1.template getComponent<CollisionComponent>().collisionOccured(entity1, entity2);
-                    entity2.template getComponent<CollisionComponent>().collisionOccured(entity2, entity1);
+                    // always get entity ref here because it could be borked by the collision
+                    entityManagerRef->getEntity(entityId1).template getComponent<CollisionComponent>().collisionOccured(entityId1, entityId2);
+                    entityManagerRef->getEntity(entityId2).template getComponent<CollisionComponent>().collisionOccured(entityId2, entityId1);
                 }
             }
         }
-       
     }
 };
 

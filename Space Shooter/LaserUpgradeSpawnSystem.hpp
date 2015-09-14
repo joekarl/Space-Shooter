@@ -76,17 +76,17 @@ public:
                     break;
             }
             
-            spriteComponent.scaleX = 64.0 / SCREEN_WIDTH / 2.0;
-            spriteComponent.scaleY = 64.0 / SCREEN_HEIGHT / 2.0;
+            spriteComponent.width = 16;
+            spriteComponent.height = 16;
             TransformComponent transformComponent;
             transformComponent.x = SCREEN_WIDTH;
-            transformComponent.y = SCREEN_HEIGHT / 2.0;
+            transformComponent.y = SCREEN_HEIGHT / 2.0 + 120;
             transformComponent.dx = -0.2;
             transformComponent.dy = 0;
             DiesWhenOffscreenComponent diesWhenOffscreenComponent;
             AABBComponent bounds;
-            bounds.width = 32.0;
-            bounds.height = 32.0;
+            bounds.width = 16;
+            bounds.height = 16;
             AutoMovementComponent autoMoveComponent;
             CollisionComponent collisionComponent;
             powerup.addComponent(laserUpgradeComponent);
@@ -97,6 +97,7 @@ public:
             powerup.addComponent(transformComponent);
             powerup.addComponent(diesWhenOffscreenComponent);
             
+            printf("Spawned a laser upgrade with id %zu\n", powerup.getId());
         }
     }
 };

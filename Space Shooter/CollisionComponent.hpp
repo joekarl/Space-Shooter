@@ -13,7 +13,7 @@
 
 class CollisionComponent {
 private:
-    void (*collisionFunction)(size_t owningEntity, size_t otherEntity);
+    std::function<void (size_t owningEntity, size_t otherEntity)> collisionFunction;
 public:
     
     CollisionComponent() {
@@ -22,7 +22,7 @@ public:
         };
     }
     
-    CollisionComponent(void (*collisionFunction)(size_t owningEntity, size_t otherEntity)) {
+    CollisionComponent(std::function<void (size_t owningEntity, size_t otherEntity)> collisionFunction) {
         this->collisionFunction = collisionFunction;
     }
     
@@ -32,8 +32,8 @@ public:
     }
     
     template <typename... EntityComponentTypes>
-    void collisionOccured(Entity<EntityComponentTypes...> &owningEntity, Entity<EntityComponentTypes...> &otherEntity) {
-        collisionFunction(owningEntity.getId(), otherEntity.getId());
+    void collisionOccured(size_t owningEntity, size_t otherEntity) {
+        collisionFunction(owningEntity, otherEntity);
     }
     
 };

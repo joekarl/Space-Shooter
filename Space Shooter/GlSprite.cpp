@@ -11,6 +11,10 @@
 #include "stb_image.h"
 
 void GlSprite::init(GLuint shaderProgram, std::string spriteImagePath) {
+    init(shaderProgram, spriteImagePath, 1);
+}
+
+void GlSprite::init(GLuint shaderProgram, std::string spriteImagePath, float numberOfFrames) {
     // get attributes/uniforms
     ss_aVecPosition = glGetAttribLocation(shaderProgram, "aVecPosition");
     ss_aTexCoord = glGetAttribLocation(shaderProgram, "aTexCoord");
@@ -22,17 +26,48 @@ void GlSprite::init(GLuint shaderProgram, std::string spriteImagePath) {
     // create sprite array buffer
     glGenBuffers(1, &glVertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, glVertexBufferId);
-    static const GLfloat spriteBufferData[] = {
-        //x,    y,   u,   v
-        -1.0, -1.0, 0.0, 0.0,
-         1.0,  1.0, 1.0, 1.0,
-        -1.0,  1.0, 0.0, 1.0,
-        -1.0, -1.0, 0.0, 0.0,
-         1.0, -1.0, 1.0, 0.0,
-         1.0,  1.0, 1.0, 1.0
+    
+    // tex coordinates are flipped in the y coordinate here because of stb_image pixel order
+    const GLfloat spriteBufferData[] = {
+        //x,    y
+        -1.0, -1.0,
+         1.0,  1.0,
+        -1.0,  1.0,
+        -1.0, -1.0,
+         1.0, -1.0,
+         1.0,  1.0
     };
     glBufferData(GL_ARRAY_BUFFER, GL_FLOAT, spriteBufferData, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, NULL);
+    
+    float frameWidth = 1.0 / numberOfFrames;
+    for (int i = 0; i < numberOfFrames; ++i) {
+        GLuint frameTextureCoordinateBuffer;
+        glGenBuffers(1, &frameTextureCoordinateBuffer);
+        glBindBuffer(GL_ARRAY_BUFFER, frameTextureCoordinateBuffer);
+        
+        float xStart = i * frameWidth;
+        float xEnd = xStart + frameWidth;
+        
+        if (i == (numberOfFrames - 1)) {
+            xEnd = 1.0;
+        }
+        
+        // tex coordinates are flipped in the y coordinate here because of stb_image pixel order
+        const GLfloat frameTextureCoordinateBufferData[] = {
+            //x,    y
+            xStart, 0,
+            xEnd,  1.0,
+            xStart,  1.0,
+            xStart, 0,
+            xEnd, 0,
+            xEnd,  1.0
+        };
+        glBufferData(GL_ARRAY_BUFFER, GL_FLOAT, frameTextureCoordinateBufferData, GL_STATIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, NULL);
+        
+        frameTextureCoordinates.push_back(frameTextureCoordinateBuffer);
+    }
     
     // create background texture
     glGenTextures(1, &textureId);
@@ -49,9 +84,14 @@ void GlSprite::init(GLuint shaderProgram, std::string spriteImagePath) {
 }
 
 void GlSprite::render(const Eigen::Matrix<GLfloat, 4, 4> &transformMatrix) {
+    render(transformMatrix, 0);
+}
+
+void GlSprite::render(const Eigen::Matrix<GLfloat, 4, 4> &transformMatrix, int frameNumber) {
     glBindBuffer(GL_ARRAY_BUFFER, glVertexBufferId);
-    glVertexAttribPointer(ss_aVecPosition, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void *)0);
-    glVertexAttribPointer(ss_aTexCoord, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void *)(2 * sizeof(GLfloat)));
+    glVertexAttribPointer(ss_aVecPosition, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
+    glBindBuffer(GL_ARRAY_BUFFER, frameTextureCoordinates[frameNumber]);
+    glVertexAttribPointer(ss_aTexCoord, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void *)0);
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureId);

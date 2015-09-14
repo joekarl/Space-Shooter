@@ -112,8 +112,8 @@ public:
                         break;
                 }
                 
-                laserSpriteComponent.scaleX = 32.0 / SCREEN_WIDTH / 2.0;
-                laserSpriteComponent.scaleY = 32.0 / SCREEN_HEIGHT / 2.0;
+                laserSpriteComponent.width = 8;
+                laserSpriteComponent.height = 8;
                 TransformComponent laserTransformComponent;
                 laserTransformComponent.x = transformComponent.x + 40;
                 laserTransformComponent.y = transformComponent.y;
@@ -121,16 +121,21 @@ public:
                 laserTransformComponent.dy = 0;
                 DiesWhenOffscreenComponent diesWhenOffscreenComponent;
                 AABBComponent laserBounds;
-                laserBounds.width = 32.0;
-                laserBounds.height = 32.0;
+                laserBounds.width = 8;
+                laserBounds.height = 8;
                 AutoMovementComponent autoMoveComponent;
                 CollisionComponent collisionComponent;
+                LaserDetailsComponent laserDetailsComponent;
+                laserDetailsComponent.firedByPlayer = true;
+                laser.addComponent(laserDetailsComponent);
                 laser.addComponent(collisionComponent);
                 laser.addComponent(autoMoveComponent);
                 laser.addComponent(laserBounds);
                 laser.addComponent(laserSpriteComponent);
                 laser.addComponent(laserTransformComponent);
                 laser.addComponent(diesWhenOffscreenComponent);
+                
+                printf("Spawned a laser with id %zu\n", laser.getId());
             }
         });
     }

@@ -21,12 +21,14 @@ private:
     GLuint spriteShaderProgramId;
     
     GlSprite shipSprite;
+    GlSprite enemyShipSprite;
     GlSprite laserBlueSprite;
     GlSprite laserRedSprite;
     GlSprite laserGreenSprite;
     GlSprite redPowerupSprite;
     GlSprite greenPowerupSprite;
     GlSprite bluePowerupSprite;
+    GlSprite explosionSprite;
     
     int componentMask = 0;
     
@@ -43,12 +45,14 @@ public:
         }
         
         shipSprite.init(spriteShaderProgramId, resourcesPath + "spaceship.png");
+        enemyShipSprite.init(spriteShaderProgramId, resourcesPath + "enemySpaceship.png");
         laserBlueSprite.init(spriteShaderProgramId, resourcesPath + "laser.png");
         laserRedSprite.init(spriteShaderProgramId, resourcesPath + "laserRed.png");
         laserGreenSprite.init(spriteShaderProgramId, resourcesPath + "laserGreen.png");
         redPowerupSprite.init(spriteShaderProgramId, resourcesPath + "redPowerup.png");
         greenPowerupSprite.init(spriteShaderProgramId, resourcesPath + "greenPowerup.png");
         bluePowerupSprite.init(spriteShaderProgramId, resourcesPath + "bluePowerup.png");
+        explosionSprite.init(spriteShaderProgramId, resourcesPath + "explosion_sprites.png", 5);
         
         componentMask |= 1 << getTypeId<SpriteRenderComponent>();
         componentMask |= 1 << getTypeId<TransformComponent>();
@@ -60,12 +64,16 @@ public:
             auto &spriteComponent = entity.template getComponent<SpriteRenderComponent>();
             auto &transformComponent = entity.template getComponent<TransformComponent>();
             
-            Eigen::Translation<GLfloat, 3> translationVec((transformComponent.x - HALF_SCREEN_WIDTH) / HALF_SCREEN_WIDTH,
+            Eigen::Translation<GLfloat, 3> translationMat((transformComponent.x - HALF_SCREEN_WIDTH) / HALF_SCREEN_WIDTH,
                                                           (transformComponent.y - HALF_SCREEN_HEIGHT) / HALF_SCREEN_HEIGHT,
                                                           0);
-            Eigen::DiagonalMatrix<GLfloat, 3> scaleVec(spriteComponent.scaleX, spriteComponent.scaleY, 1);
+            Eigen::DiagonalMatrix<GLfloat, 3> scaleMat(spriteComponent.width / SCREEN_WIDTH,
+                                                       spriteComponent.height / SCREEN_HEIGHT,
+                                                       1);
             
-            Eigen::Transform<GLfloat, 3, Eigen::Affine> transformMatrix = translationVec * scaleVec;
+            Eigen::AngleAxis<GLfloat> rotationMat(transformComponent.rotationAngle, Eigen::Vector3f::UnitZ());
+            
+            Eigen::Transform<GLfloat, 3, Eigen::Affine> transformMatrix = translationMat * scaleMat * rotationMat;
             
             switch (spriteComponent.sprite) {
                 case SpriteType::SPACESHIP:
@@ -96,6 +104,14 @@ public:
                     bluePowerupSprite.render(transformMatrix.matrix());
                     break;
                     
+                case SpriteType::ENEMY_SPACESHIP:
+                    enemyShipSprite.render(transformMatrix.matrix());
+                    break;
+                    
+                case SpriteType::EXPLOSION:
+                    explosionSprite.render(transformMatrix.matrix(), spriteComponent.currentFrame);
+                    break;
+                
                 default:
                     break;
             }

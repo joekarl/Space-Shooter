@@ -125,6 +125,7 @@ public:
     }
     
     void reset() {
+        printf("Reseting entity %zu\n", id);
         dead = true;
         dying = false;
         creating = false;

@@ -13,13 +13,29 @@
 #include "GlSprite.hpp"
 
 class SpriteRenderComponent {
+    
+private:
+    
 public:
     SpriteType sprite;
-    float scaleX, scaleY;
+    float width, height;
+    double timeCounter;
+    int currentFrame = 0;
+    double frameDuration = 500;
+    int numberOfFrames = 1;
+    bool loop = true;
     
     template <typename... EntityComponentTypes>
     void init(Entity<EntityComponentTypes...> &entity) {
-        //noop
+    }
+    
+    void advanceAnimation(double dt) {
+        timeCounter += dt;
+        if (!loop && timeCounter > frameDuration * numberOfFrames) {
+            currentFrame = numberOfFrames - 1;
+        } else {
+            currentFrame = ((int)(timeCounter / frameDuration)) % numberOfFrames;
+        }
     }
 };
 

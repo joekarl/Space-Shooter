@@ -18,6 +18,9 @@
 #include "AutoMovementComponent.hpp"
 #include "CollisionComponent.hpp"
 #include "LaserUpgradeComponent.hpp"
+#include "LaserDetailsComponent.hpp"
+#include "DiesAfterTimePeriodComponent.hpp"
+#include "EnemyAIComponent.hpp"
 
 template<>
 int getTypeId<TransformComponent>() {
@@ -57,6 +60,21 @@ int getTypeId<AutoMovementComponent>() {
 template<>
 int getTypeId<LaserUpgradeComponent>() {
     return 7;
+}
+
+template<>
+int getTypeId<LaserDetailsComponent>() {
+    return 8;
+}
+
+template<>
+int getTypeId<DiesAfterTimePeriodComponent>() {
+    return 9;
+}
+
+template<>
+int getTypeId<EnemyAIComponent>() {
+    return 10;
 }
 
 #endif /* ComponentTypes_h */

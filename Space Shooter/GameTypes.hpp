@@ -26,12 +26,14 @@ struct GameInput {
 
 enum SpriteType {
     SPACESHIP,
+    ENEMY_SPACESHIP,
     RED_POWERUP,
     GREEN_POWERUP,
     BLUE_POWERUP,
     RED_LASER,
     BLUE_LASER,
-    GREEN_LASER
+    GREEN_LASER,
+    EXPLOSION
 };
 
 enum LaserUpgradeType {

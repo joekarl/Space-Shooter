@@ -36,14 +36,16 @@ public:
             auto halfWidth = aabbComponent.width / 2.0;
             auto halfHeight = aabbComponent.height / 2.0;
             
-            if ((transformComponent.x - halfWidth > SCREEN_WIDTH ||
-                 transformComponent.x + halfWidth < 0 ||
-                 transformComponent.y - halfHeight > SCREEN_HEIGHT ||
-                 transformComponent.y + halfHeight < 0) &&
-                diesWhenOffscreenComponent.cameOnscreen) {
+            auto isOffscreen = (transformComponent.x - halfWidth > SCREEN_WIDTH ||
+                                transformComponent.x + halfWidth < 0 ||
+                                transformComponent.y - halfHeight > SCREEN_HEIGHT ||
+                                transformComponent.y + halfHeight < 0);
+            
+            if (isOffscreen && diesWhenOffscreenComponent.cameOnscreen) {
                 // only kill if we're offscreen and have been onscreen at some point
+                printf("Killing entity %zu because it went offscreen\n", entity.getId()); 
                 entity.kill();
-            } else if (!diesWhenOffscreenComponent.cameOnscreen) {
+            } else if (!isOffscreen && !diesWhenOffscreenComponent.cameOnscreen) {
                 diesWhenOffscreenComponent.cameOnscreen = true;
             } else if (transformComponent.x > 10000 ||
                        transformComponent.x < -1000 ||

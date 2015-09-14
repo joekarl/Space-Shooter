@@ -11,11 +11,12 @@
 
 #include "Entity.hpp"
 
-
 class TransformComponent {
 public:
-    float x, y, z;
-    float dx, dy, dz;
+    float x = 0, y = 0, z = 0;
+    float dx = 0, dy = 0, dz = 0;
+    // only affects sprite rotation right now, doesn't affect collison bounds
+    float rotationAngle = 0;
     
     template <typename... EntityComponentTypes>
     void init(Entity<EntityComponentTypes...> &entity){/*noop*/}
